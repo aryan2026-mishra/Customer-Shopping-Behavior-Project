@@ -224,24 +224,10 @@ PyMySQL>=1.0.0
 python-dotenv>=0.19.0
 openpyxl>=3.6.0
 
-## 🔄 Git Commands - How to Push to GitHub
+ 
+ 
 
-### Step 1: Create a GitHub Repository
-1. Go to https://github.com/aryan2026-mishra
-2. Click **"New"** or **"+"** → **"New repository"**
-3. Name: `Customer_Shopping_Behaviour_Analysis`
-4. Click **"Create repository"** (don't initialize with README)
-
-### Step 2: Push Your Project
-
-**Copy and paste these commands one by one:**
-```bash
-git init
-git add .
-git commit -m "Initial commit: Customer Shopping Behaviour Analysis"
-git remote add origin https://github.com/YOUR_USERNAME/Customer_Shopping_Behaviour_Analysis.git
-git branch -M main
-git push -u origin main
+ 
 ```
 
 **Replace `YOUR_USERNAME` with your actual GitHub username!**
