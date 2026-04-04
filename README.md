@@ -42,28 +42,6 @@ The analysis addresses the following key business questions:
 10. **Payment Methods** - Understand customer payment preferences
 11. **Loyal Customers** - Identify high-value customers with 5+ previous purchases and ratings >4.5
 
-## 📁 Project Structure
-Customer_Shopping_Behaviour_Analysis/
-│
-├── README.md
-├── requirements.txt
-├── .gitignore
-│
-├── data/
-│   └── shopping_behavior_updated.csv
-│
-├── notebooks/
-│   └── Customer_Shopping_Behaviour.ipynb
-│
-├── sql/
-│   └── Customer_Shopping_Behaviour_Analysis_Project.sql
-│
-├── dashboards/
-│   └── Customer_Shopping_Dashboard.pbix
-│
-└── documentation/
-└── Customer_Shopping_Behaviour_Analysis_Problem_Statement.pdf
-
 ## 🛠️ Tools & Technologies
 
 ### **Python Libraries (Jupyter Notebook)**
