@@ -1,282 +1,478 @@
-# Customer Shopping Behaviour Analysis Project
+# 🛍️ Customer Shopping Behavior Analysis
 
-A comprehensive data analysis project exploring customer shopping behavior patterns using **Python EDA**, **SQL queries**, and **Power BI dashboards**.
+> **An end-to-end retail analytics project combining Python EDA, MySQL, and Power BI to transform customer transaction data into actionable business insights.**
 
-## 📋 Table of Contents
+![Python](https://img.shields.io/badge/Python-EDA-blue?logo=python)
+![SQL](https://img.shields.io/badge/SQL-MySQL-orange?logo=mysql)
+![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow?logo=powerbi)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter)
 
-- [Project Overview](#project-overview)
-- [Business Objectives](#business-objectives)
-- [Project Structure](#project-structure)
-- [Tools & Technologies](#tools--technologies)
-- [Installation & Setup](#installation--setup)
-- [Project Workflow](#project-workflow)
-- [Key Findings](#key-findings)
-- [Files Description](#files-description)
-- [How to Use](#how-to-use)
-- [Git Commands](#git-commands)
-- [Contact](#contact)
+---
 
-## 🎯 Project Overview
+## 📌 Project Overview
 
-This project performs an in-depth analysis of customer shopping behavior to extract actionable business insights. The analysis pipeline includes:
+Customer Shopping Behavior Analysis is an end-to-end data analytics project designed to understand **how customers purchase, what they purchase, how they respond to promotions, and which customer characteristics are associated with different purchasing patterns**.
 
-1. **Exploratory Data Analysis (EDA)** - Using Python and Pandas
-2. **SQL Analysis** - Advanced queries for data insights
-3. **Data Visualization** - Interactive Power BI dashboard
+The project combines three major analytical layers:
 
-The project answers 11 key business questions about customer demographics, purchasing patterns, seasonal trends, payment preferences, and promotional effectiveness.
+**Python → SQL → Power BI**
 
-## 🎖️ Business Objectives
+* 🐍 **Python** for data exploration, cleaning, statistical analysis, and visualization
+* 🗄️ **MySQL** for structured business analysis and analytical querying
+* 📊 **Power BI** for interactive reporting and business intelligence
 
-The analysis addresses the following key business questions:
+The analysis works with **3,900 customer shopping records containing 18 attributes** covering demographics, products, purchase behavior, promotions, subscriptions, payment methods, shipping, ratings, and previous purchases.
 
-1. **Popular Products** - Identify the most popular product categories and items driving sales
-2. **Demographic Influence** - Analyze how age, gender, and location affect purchasing behavior
-3. **Promotional Impact** - Measure the effectiveness of discounts and promo codes on revenue
-4. **Subscription Analysis** - Examine the relationship between subscription status and purchase frequency
-5. **Payment Trends** - Evaluate payment method preferences and seasonal sales trends
-6. **Top Categories** - Retrieve the top 5 best-selling product categories
-7. **Gender Spending** - Compare average purchase amounts across gender demographics
-8. **Promo Code Anomalies** - Identify customers using promo codes but not applying discounts
-9. **Seasonal Patterns** - Determine which season drives the highest average purchase amounts
-10. **Payment Methods** - Understand customer payment preferences
-11. **Loyal Customers** - Identify high-value customers with 5+ previous purchases and ratings >4.5
+---
 
-## 🛠️ Tools & Technologies
+## 🎯 Business Problem
 
-### **Python Libraries (Jupyter Notebook)**
-- **Pandas** - Data manipulation and aggregation
-- **NumPy** - Numerical computations
-- **Matplotlib** - Static visualizations
-- **Seaborn** - Advanced data visualizations
+Retail businesses generate large amounts of customer transaction data, but raw transaction records alone do not explain:
 
-### **Database & SQL**
-- **MySQL** - Database management
-- **SQL Queries** - Complex data analysis and filtering
+* Which products and categories drive demand?
+* Which customer groups spend more?
+* Do promotions influence purchasing?
+* How does subscription status relate to purchasing frequency?
+* Which payment methods are most frequently used?
+* Which seasons generate stronger sales?
+* Who are the highly engaged and loyal customers?
+* Are there inconsistencies between promo-code usage and applied discounts?
 
-### **Visualization**
-- **Power BI** - Interactive dashboards and business intelligence
+This project converts these questions into **data-driven analytical queries and visual insights**.
 
-## ⚙️ Installation & Setup
+---
 
-### Prerequisites
-- Python 3.7+ (for Jupyter notebook)
-- MySQL Server (for SQL queries)
-- Power BI Desktop (for dashboard visualization)
-- Jupyter Notebook or JupyterLab
+## 📊 Dataset
 
-### Step 1: Clone Repository
+### Dataset Size
+
+| Attribute   | Details                        |
+| ----------- | ------------------------------ |
+| Records     | **3,900**                      |
+| Features    | **18**                         |
+| Data Type   | Customer shopping transactions |
+| Main Domain | Retail / E-commerce            |
+
+### Major Features
+
+| Category        | Variables                             |
+| --------------- | ------------------------------------- |
+| 👤 Customer     | Customer ID, Age, Gender, Location    |
+| 🛒 Product      | Item Purchased, Category, Size, Color |
+| 💰 Purchase     | Purchase Amount                       |
+| 🌦️ Seasonality | Season                                |
+| ⭐ Engagement    | Review Rating                         |
+| 🔄 Loyalty      | Previous Purchases                    |
+| 🎁 Promotion    | Discount Applied, Promo Code Used     |
+| 💳 Payment      | Payment Method                        |
+| 📦 Fulfillment  | Shipping Type                         |
+| 🔔 Subscription | Subscription Status                   |
+| ⏱️ Frequency    | Frequency of Purchases                |
+
+---
+
+# 🧠 Analytical Objectives
+
+The project addresses **12 business-oriented analytical questions**.
+
+### 1. Product Performance
+
+Identify the most frequently purchased products and categories.
+
+### 2. Customer Demographics
+
+Analyze purchasing behavior across:
+
+* Age
+* Gender
+* Location
+
+### 3. Promotional Impact
+
+Measure sales and transaction patterns based on:
+
+* Discount application
+* Promo-code usage
+
+### 4. Subscription Behavior
+
+Study the relationship between subscription status and purchase frequency.
+
+### 5. Payment Preferences
+
+Identify the most frequently used payment methods.
+
+### 6. Seasonal Revenue
+
+Analyze transaction volume and revenue across different seasons.
+
+### 7. Top Revenue-Generating Products
+
+Identify the top products based on total purchase value.
+
+### 8. Gender-Based Spending
+
+Compare average purchase amounts across gender groups.
+
+### 9. Promotion Validation
+
+Identify customers who used promo codes but did not receive an applied discount.
+
+### 10. Seasonal Spending
+
+Determine which seasons have higher average purchase amounts.
+
+### 11. Payment-Based Revenue
+
+Compare transaction counts and total purchase value across payment methods.
+
+### 12. Loyal Customer Identification
+
+Identify customers with:
+
+* More than 5 previous purchases
+* Review rating above 4.5
+
+These questions are implemented in the project's SQL analysis.
+
+---
+
+# 🔄 End-to-End Analytics Workflow
+
+```text
+                    RAW CUSTOMER DATA
+                           │
+                           ▼
+                  Data Understanding
+                           │
+                           ▼
+                 Python Data Cleaning
+                           │
+                           ▼
+                 Exploratory Data Analysis
+                           │
+                           ▼
+                    MySQL Database
+                           │
+                           ▼
+                  Business SQL Analysis
+                           │
+                           ▼
+                 Power BI Data Modeling
+                           │
+                           ▼
+                Interactive Dashboard
+                           │
+                           ▼
+                Business Insights
+```
+
+---
+
+# 🐍 Phase 1 — Python EDA
+
+The Jupyter Notebook is used for the initial analytical layer.
+
+### Activities
+
+* Load customer shopping dataset
+* Inspect dataset structure
+* Check data types
+* Identify missing values
+* Check duplicate records
+* Generate descriptive statistics
+* Analyze customer demographics
+* Explore product categories
+* Examine purchase distributions
+* Analyze seasonal patterns
+* Visualize customer behavior
+* Identify potential patterns and anomalies
+
+### Libraries
+
+```text
+Pandas
+NumPy
+Matplotlib
+Seaborn
+Jupyter Notebook
+```
+
+---
+
+# 🗄️ Phase 2 — MySQL Analysis
+
+The SQL layer converts business questions into measurable analytical queries.
+
+The project standardizes database columns and performs analytical operations using:
+
+* `GROUP BY`
+* `ORDER BY`
+* `COUNT()`
+* `SUM()`
+* `AVG()`
+* `CASE`
+* Filtering
+* Conditional analysis
+* Customer segmentation logic
+
+The SQL file contains **12 analytical sections** covering product, customer, promotion, subscription, payment, seasonality, and loyalty analysis.
+
+### Example Business Analysis
+
+```sql
+SELECT
+    category,
+    item_purchased,
+    COUNT(*) AS total_purchases
+FROM shopping_behaviour
+GROUP BY category, item_purchased
+ORDER BY total_purchases DESC;
+```
+
+This converts raw transaction records into a ranked view of product demand.
+
+---
+
+# 📊 Phase 3 — Power BI Dashboard
+
+The Power BI dashboard provides an interactive business intelligence layer.
+
+### Dashboard Capabilities
+
+* KPI-based reporting
+* Customer behavior analysis
+* Product performance
+* Demographic analysis
+* Seasonal analysis
+* Payment-method analysis
+* Promotion analysis
+* Customer loyalty insights
+* Interactive filtering
+* Drill-down analysis
+
+The repository includes the Power BI `.pbix` dashboard used for visualization.
+
+---
+
+# 💡 Business Insight Areas
+
+The project is designed around several decision-making areas.
+
+### 🛒 Product Intelligence
+
+Understand which products and categories generate the highest purchasing activity.
+
+### 👥 Customer Intelligence
+
+Analyze differences in customer behavior based on demographics and location.
+
+### 🎁 Promotion Intelligence
+
+Evaluate how discounts and promotional codes are associated with purchasing behavior.
+
+### 🔄 Customer Loyalty
+
+Identify customers with stronger historical purchase activity and high ratings.
+
+### 💳 Payment Intelligence
+
+Understand customer payment preferences and transaction distribution.
+
+### 🌦️ Seasonal Intelligence
+
+Identify seasonal differences in transaction activity and purchase value.
+
+---
+
+# 📁 Repository Structure
+
+```text
+Customer-Shopping-Behavior-Project/
+│
+├── Customer Shopping Behaviour.ipynb
+│       └── Python EDA & Data Analysis
+│
+├── Customer Shopping Behaviour Analysis Project.sql
+│       └── MySQL Business Analysis
+│
+├── shopping_behavior_updated.csv
+│       └── Customer Shopping Dataset
+│
+├── Customer Shopping Dashboard.pbix
+│       └── Power BI Dashboard
+│
+├── Customer Shopping Behaviour Analysis Problem Statement.pdf
+│       └── Business Requirements
+│
+├── README.md
+│
+└── .ipynb_checkpoints/
+```
+
+The current repository contains these core project assets.
+
+---
+
+# 🛠️ Technology Stack
+
+| Technology       | Purpose                     |
+| ---------------- | --------------------------- |
+| Python           | Data analysis               |
+| Pandas           | Data manipulation           |
+| NumPy            | Numerical operations        |
+| Matplotlib       | Visualization               |
+| Seaborn          | Statistical visualization   |
+| MySQL            | Database & SQL analysis     |
+| Power BI         | Dashboard & reporting       |
+| Jupyter Notebook | Analytical environment      |
+| GitHub           | Version control & portfolio |
+
+---
+
+# 📈 Key Analytical Outcomes
+
+The project produces insights across:
+
+* Product popularity
+* Category performance
+* Customer demographics
+* Average spending
+* Promotional activity
+* Subscription behavior
+* Payment preferences
+* Seasonal purchasing
+* Customer loyalty
+* High-value customer identification
+
+Rather than focusing only on visualization, the project connects **business questions → data analysis → SQL results → dashboard reporting**.
+
+---
+
+# 🚀 How to Run
+
+## 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/Customer_Shopping_Behaviour_Analysis.git
-cd Customer_Shopping_Behaviour_Analysis
+git clone <your-repository-url>
+cd Customer-Shopping-Behavior-Project
 ```
 
-### Step 2: Create Virtual Environment
+## 2. Install Python Dependencies
+
 ```bash
-python -m venv venv
-
-# On Windows
-venv\Scripts\activate
-
-# On macOS/Linux
-source venv/bin/activate
+pip install pandas numpy matplotlib seaborn jupyter
 ```
 
-### Step 3: Install Dependencies
+## 3. Open the Notebook
+
 ```bash
-pip install -r requirements.txt
+jupyter notebook
 ```
 
-### Step 4: Run Jupyter Notebook
-```bash
-jupyter notebook notebooks/Customer_Shopping_Behaviour.ipynb
+Then open:
+
+```text
+Customer Shopping Behaviour.ipynb
 ```
 
-### Step 5: Set Up SQL Database
-1. Open your MySQL client
-2. Create a database named `Market`
-3. Import the SQL script:
-```bash
-mysql -u root -p Market < sql/Customer_Shopping_Behaviour_Analysis_Project.sql
+## 4. Configure MySQL
+
+Create a database:
+
+```sql
+CREATE DATABASE Market;
+USE Market;
 ```
 
-### Step 6: Open Power BI Dashboard
-1. Open Power BI Desktop
-2. Load `dashboards/Customer_Shopping_Dashboard.pbix`
-3. Refresh data connections if needed
+Import the customer shopping dataset into the database and execute:
 
-## 🔄 Project Workflow
-
-### Phase 1: Data Exploration (Python - Jupyter)
-- Load customer shopping data from CSV using Pandas
-- Check data types, missing values, and duplicates
-- Generate descriptive statistics
-- Explore distributions and relationships
-- Create exploratory visualizations
-
-### Phase 2: Data Analysis (SQL)
-- Clean and standardize column names
-- Execute 12 analytical queries covering:
-  - Product popularity analysis
-  - Demographic insights
-  - Promotional impact assessment
-  - Seasonal trends
-  - Payment method preferences
-  - Customer loyalty metrics
-
-### Phase 3: Dashboard Creation (Power BI)
-- Create interactive visualizations
-- Build KPI cards and performance metrics
-- Enable data filtering and drill-down capabilities
-- Design user-friendly dashboard layout
-
-## 💡 Key Findings
-
-The analysis reveals insights about:
-- **Most Popular Categories** - Top-selling product categories
-- **Seasonal Trends** - Highest revenue and purchase seasons
-- **Demographic Patterns** - Customer behavior by age, gender, and location
-- **Promotional Effectiveness** - Impact of discounts and promo codes on sales
-- **Payment Preferences** - Most used payment methods
-- **Customer Loyalty** - Segments of loyal and high-value customers
-- **Average Spending** - Differences in spending habits across demographics
-
-*See Power BI dashboard for detailed visualizations of these findings.*
-
-## 📄 Files Description
-
-### Jupyter Notebook
-**`Customer_Shopping_Behaviour.ipynb`**
-- Loads and explores the shopping behavior dataset
-- Performs EDA with statistical analysis
-- Creates exploratory visualizations
-- Identifies data patterns and anomalies
-- Data cleaning and preparation
-
-### SQL Script
-**`Customer_Shopping_Behaviour_Analysis_Project.sql`**
-- 12 sophisticated SQL queries
-- Data validation and cleaning operations
-- Analyzes customer segments and spending patterns
-- Identifies temporal and demographic trends
-- Insights on payment methods and seasonal patterns
-
-### Power BI Dashboard
-**`Customer_Shopping_Dashboard.pbix`**
-- Interactive dashboard with multiple visualizations
-- Visual KPIs and performance metrics
-- Filterable charts and drill-down capabilities
-- Real-time data representation
-- Customer behavior insights
-
-### Problem Statement
-**`Customer_Shopping_Behaviour_Analysis_Problem_Statement.pdf`**
-- Detailed business requirements
-- 11 analytical objectives
-- Expected deliverables and metrics
-
-## 🚀 How to Use
-
-### For Data Analysis
-1. Open the Jupyter notebook in your browser
-2. Run cells sequentially to see the analysis
-3. Modify queries and visualizations as needed
-4. Add your own analysis and insights
-
-### For SQL Queries
-1. Connect to your MySQL database
-2. Run queries from the SQL script
-3. Modify WHERE clauses and conditions as per requirements
-4. Export results for presentations
-
-### For Dashboard Visualization
-1. Open Power BI Desktop
-2. Load the `.pbix` file
-3. Interact with filters and charts
-4. Drill down into specific data segments
-5. Customize visualizations as needed
-
-## 📊 Dataset Information
-
-**Dataset:** `shopping_behavior_updated.csv`
-
-**Total Attributes:** 18 customer shopping features
-
-**Key Columns:**
-- **Customer Info:** Customer ID, Age, Gender, Location
-- **Product Details:** Item Purchased, Category, Size, Color
-- **Purchase Behavior:** Purchase Amount (USD), Season, Frequency of Purchases
-- **Engagement:** Review Rating, Subscription Status
-- **Promotions:** Discount Applied, Promo Code Used
-- **Transaction:** Payment Method, Shipping Type
-- **Loyalty:** Previous Purchases
-
-## 📋 Dependencies
-pandas>=1.3.0
-numpy>=1.21.0
-matplotlib>=3.4.0
-seaborn>=0.11.0
-jupyter>=1.0.0
-jupyterlab>=3.0.0
-ipython>=7.0.0
-mysql-connector-python>=8.0.0
-PyMySQL>=1.0.0
-python-dotenv>=0.19.0
-openpyxl>=3.6.0
-
- 
- 
-
- 
+```text
+Customer Shopping Behaviour Analysis Project.sql
 ```
 
-**Replace `YOUR_USERNAME` with your actual GitHub username!**
+## 5. Open Power BI
 
-### Step 3: For Future Updates
-```bash
-git add .
-git commit -m "Description of changes"
-git push origin main
+Open:
+
+```text
+Customer Shopping Dashboard.pbix
 ```
 
-## 📝 License
+Refresh the dataset if required.
 
-This project is open source and available under the MIT License.
+---
 
-## 👤 Author
+# 🔍 Skills Demonstrated
+
+### Data Analytics
+
+* Exploratory Data Analysis
+* Data Cleaning
+* Data Validation
+* Descriptive Statistics
+* Business Question Framing
+
+### SQL
+
+* Aggregation
+* Filtering
+* Grouping
+* Conditional Logic
+* Business KPI Analysis
+* Customer Segmentation
+
+### Business Intelligence
+
+* Power BI
+* Dashboard Development
+* KPI Design
+* Interactive Filtering
+* Business Storytelling
+
+### Business Analysis
+
+* Customer Behavior
+* Retail Analytics
+* Product Analytics
+* Promotion Analytics
+* Customer Loyalty
+* Payment Analytics
+
+---
+
+# 🚀 Future Improvements
+
+Potential extensions include:
+
+* Customer segmentation using clustering
+* Customer lifetime value analysis
+* Churn prediction
+* Recommendation systems
+* Customer propensity modeling
+* Sales forecasting
+* RFM analysis
+* Advanced cohort analysis
+* Automated dashboard refresh
+* Predictive customer analytics
+
+---
+
+# 👤 Author
 
 **Aryan Mishra**
-- Email: [aryanmishra01718@gmail.com](mailto:aryanmishra01718@gmail.com)
- 
 
-## 🤝 Contributing
+B.Tech CSE | Data Analytics | Python | SQL | Power BI | Machine Learning
 
-Contributions, issues, and feature requests are welcome!
+Email: [aryanmishra01718@gmail.com](mailto:aryanmishra01718@gmail.com)
 
-Feel free to:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -m 'Add improvement'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Open a Pull Request
+---
 
- 
+## ⭐ Project Objective
 
-For questions or issues:
-- Open an issue on GitHub
-- Email: aryanmishra01718@gmail.com
+The objective of this project is not simply to create charts, but to demonstrate a complete **analyst workflow**:
 
+> **Understand the business problem → clean the data → explore the data → query the data → visualize the results → communicate actionable insights.**
 
-pandas>=1.3.0
-numpy>=1.21.0
-scipy>=1.7.0
-matplotlib>=3.4.0
-seaborn>=0.11.0
-jupyter>=1.0.0
-jupyterlab>=3.0.0
-ipython>=7.0.0
-mysql-connector-python>=8.0.0
-PyMySQL>=1.0.0
-python-dotenv>=0.19.0
-openpyxl>=3.6.0
-
+---
